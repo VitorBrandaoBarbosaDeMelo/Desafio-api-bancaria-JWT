@@ -1,6 +1,8 @@
-  Sistema Bancário Simples em Python (CLI)
+  Entrega do Projeto Bootcamp DIO: Luizalabs - Back-end com Python
+  Desafio: Otimizando o Sistema Bancário simples com Funções Python
   
-Este é um projeto simples de sistema bancário desenvolvido em Python, focado em demonstrar o uso de funções, parâmetros especiais (positional-only e keyword-only), e persistência de dados (JSON). 
+   
+Este é um projeto simples de sistema bancário desenvolvido em Python, para concluir o desafio DIO: Luizalabs - Back-end com Python, focado em demonstrar o uso de funções, parâmetros especiais (positional-only e keyword-only), e persistência de dados (JSON). 
 O sistema opera via interface de linha de comando (CLI).
 
 

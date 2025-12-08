@@ -34,8 +34,24 @@ Persistência de Contas: Os dados das contas (incluindo saldo e extrato) são sa
 
 Parâmetros Especiais: Funções utilizam marcadores especiais (/ e *) para restringir como os argumentos devem ser passados, promovendo clareza e segurança na interface da função.
 
+RESUMO:
+# Titulo: Sistema bancário que combina a estrutura de Programação Orientada a Objetos (POO) 
+   # com a persistência de dados (JSON) para criar um sistema bancário modular.
+
+###funcionalidades e estruturas do código ###
+    # Funcionalidades:
+    # - Criação e gerenciamento de clientes e contas bancárias.
+    # - Realização de transações como depósitos e saques.
+    # - Geração de extratos detalhados das contas.
+    # - Persistência de dados usando arquivos JSON para armazenar informações de clientes e contas.
+    
+    # Estruturas do código:
+    # - Classes para modelar clientes, contas, transações e histórico.
+    # - Funções para carregar e salvar dados em arquivos JSON.
+    # - Funções de serviço para interagir com o usuário e executar operações bancárias.
+    # - Uma função principal que orquestra o fluxo do programa, apresentando um menu interativo ao usuário.
+
 Os próximos passos seriam:
 
 Criar uma interface grafica, importando algumas bibliotecas, provavelmente: import tkinter e import customtkinter.
-Executar como .exe e atribuir um atalho para acesso rápido.
-...
+Executar como .exe e atribuir um atalho para acesso rápido...

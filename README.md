@@ -163,5 +163,6 @@ Use estas credenciais para testar a API:
 
 ## Desafio DIO
 
-Projeto desenvolvido como parte do **Bootcamp Luizalabs - Back-end com Python** (Desafio DIO)
+Projeto desenvolvido por: Vitor Brandão Barbosa de Melo, como parte do Bootcamp Luizalabs - Back-end com Python (Desafio DIO) - Guilherme Carvalho
+Creditos e codigo inicial de desenvolvimento: Guilherme Carvalho
 

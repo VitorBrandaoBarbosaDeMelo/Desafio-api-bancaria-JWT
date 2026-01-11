@@ -13,7 +13,7 @@ API moderna para gerenciamento de operações bancárias com autenticação JWT 
 - Perfil do usuário
 - Dados persistidos em JSON
 - Documentação automática com Swagger UI
-<img width="810" height="798" alt="3-Swagger pronto" src="https://github.com/user-attachments/assets/cf10d4da-7044-4c33-8b09-6733a5dd0333" />
+<img width="405" height="399" alt="3-Swagger pronto" src="https://github.com/user-attachments/assets/cf10d4da-7044-4c33-8b09-6733a5dd0333" />
 
 
 ## Quick Start

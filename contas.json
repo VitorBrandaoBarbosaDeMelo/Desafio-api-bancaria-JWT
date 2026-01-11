@@ -1,11 +1,58 @@
-[
-    {
+{
+    "12345678901": {
+        "numero": "000001",
         "agencia": "0001",
-        "numero_conta": 1,
-        "saldo": 0,
+        "saldo": 100.0,
+        "cpf_cliente": "12345678901",
         "limite": 500,
-        "extrato": "",
-        "numero_saques": 0,
-        "cpf_usuario": "10866967435"
+        "limite_saques": 3,
+        "historico_transacoes": [
+            {
+                "tipo": "Deposito",
+                "valor": 100.0,
+                "data": "10-01-2026 22:35:08"
+            }
+        ],
+        "tipo_conta": "ContaCorrente"
+    },
+    "98765432109": {
+        "numero": "000002",
+        "agencia": "0001",
+        "saldo": 0.0,
+        "cpf_cliente": "98765432109",
+        "limite": 500,
+        "limite_saques": 3,
+        "historico_transacoes": [],
+        "tipo_conta": "ContaCorrente"
+    },
+    "11122233344": {
+        "numero": "000003",
+        "agencia": "0001",
+        "saldo": 0.0,
+        "cpf_cliente": "11122233344",
+        "limite": 500,
+        "limite_saques": 3,
+        "historico_transacoes": [],
+        "tipo_conta": "ContaCorrente"
+    },
+    "55544433322": {
+        "numero": "000004",
+        "agencia": "0001",
+        "saldo": 0.0,
+        "cpf_cliente": "55544433322",
+        "limite": 500,
+        "limite_saques": 3,
+        "historico_transacoes": [],
+        "tipo_conta": "ContaCorrente"
+    },
+    "77788899900": {
+        "numero": "000005",
+        "agencia": "0001",
+        "saldo": 0.0,
+        "cpf_cliente": "77788899900",
+        "limite": 500,
+        "limite_saques": 3,
+        "historico_transacoes": [],
+        "tipo_conta": "ContaCorrente"
     }
-]
+}

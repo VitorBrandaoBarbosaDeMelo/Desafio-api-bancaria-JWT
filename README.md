@@ -1,57 +1,167 @@
-  Entrega do Projeto Bootcamp DIO: Luizalabs - Back-end com Python
-  Desafio: Otimizando o Sistema Bancário simples com Funções Python
-  
-   
-Este é um projeto simples de sistema bancário desenvolvido em Python, para concluir o desafio DIO: Luizalabs - Back-end com Python, focado em demonstrar o uso de funções, parâmetros especiais (positional-only e keyword-only), e persistência de dados (JSON). 
-O sistema opera via interface de linha de comando (CLI).
+# API Bancária REST com FastAPI e JWT
 
+API moderna para gerenciamento de operações bancárias com autenticação JWT segura.
 
-  Funcionalidades Principais:
-  
-Cadastro de Clientes (Usuários): Permite cadastrar novos clientes (usuários) com nome, CPF, data de nascimento e endereço. 
-O CPF deve ser armazenado somente com números e é garantida a unicidade.
+## Funcionalidades
 
-Contas Correntes: Permite criar contas correntes vinculadas a usuário. 
+- Registro de usuários com CPF único
+- Autenticação via JWT (tokens de 30 minutos)
+- Depósitos sem limite
+- Saques com validações (máximo R$500, 3 por dia)
+- Consulta de saldo
+- Extrato com histórico de transações
+- Perfil do usuário
+- Dados persistidos em JSON
+- Documentação automática com Swagger UI
 
-As contas possuem agência e número sequencial.
+## Quick Start
 
-Operações Bancárias:
+### Iniciar a API
 
-Depósito: Implementado usando parâmetros positional-only (apenas por posição: saldo, valor, extrato, /).
+```bash
+python api.py
+```
 
-Saque: Implementado usando parâmetros keyword-only (apenas por nome: *, saldo, valor, extrato, limite, ...).
-Extrato: Exibe o histórico de movimentações e o saldo da conta.
+Acesse em: **http://localhost:8000/docs** (Swagger UI)
 
-Vinculação por Conta: Todas as operações são vinculadas a uma conta específica, garantindo que cada conta tenha seu próprio saldo, extrato e limite de saque isolados.
+## Exemplos de Uso
 
+### 1. Registrar usuário
 
- Arquitetura e Persistência de Dados
-O projeto utiliza o módulo json do Python para garantir que os dados de usuários e contas não sejam perdidos ao fechar o programa.
+```bash
+curl -X POST 'http://localhost:8000/api/v1/usuarios/registrar' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "nome": "João Silva",
+    "cpf": "12345678901",
+    "data_nascimento": "15-03-1990",
+    "endereco": "Rua A, 123",
+    "senha": "senha123"
+  }'
+```
 
-Persistência de Usuários: Os dados de clientes são salvos no arquivo usuarios.json.
+### 2. Fazer login (obter token JWT)
 
-Persistência de Contas: Os dados das contas (incluindo saldo e extrato) são salvos no arquivo contas.json.
+```bash
+curl -X POST 'http://localhost:8000/api/v1/auth/login' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "cpf": "12345678901",
+    "senha": "senha123"
+  }'
+```
 
-Parâmetros Especiais: Funções utilizam marcadores especiais (/ e *) para restringir como os argumentos devem ser passados, promovendo clareza e segurança na interface da função.
+**Resposta:**
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIs...",
+  "token_type": "bearer",
+  "expires_in": 1800
+}
+```
 
-RESUMO:
-# Titulo: Sistema bancário que combina a estrutura de Programação Orientada a Objetos (POO) 
-   # com a persistência de dados (JSON) para criar um sistema bancário modular.
+### 3. Fazer depósito (protegido por JWT)
 
-###funcionalidades e estruturas do código ###
-    # Funcionalidades:
-    # - Criação e gerenciamento de clientes e contas bancárias.
-    # - Realização de transações como depósitos e saques.
-    # - Geração de extratos detalhados das contas.
-    # - Persistência de dados usando arquivos JSON para armazenar informações de clientes e contas.
-    
-    # Estruturas do código:
-    # - Classes para modelar clientes, contas, transações e histórico.
-    # - Funções para carregar e salvar dados em arquivos JSON.
-    # - Funções de serviço para interagir com o usuário e executar operações bancárias.
-    # - Uma função principal que orquestra o fluxo do programa, apresentando um menu interativo ao usuário.
+```bash
+curl -X POST 'http://localhost:8000/api/v1/transacoes/depositar' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIs...' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "valor": 100.00
+  }'
+```
 
-Os próximos passos seriam:
+### 4. Fazer saque (protegido por JWT)
 
-Criar uma interface grafica, importando algumas bibliotecas, provavelmente: import tkinter e import customtkinter.
-Executar como .exe e atribuir um atalho para acesso rápido...
+```bash
+curl -X POST 'http://localhost:8000/api/v1/transacoes/sacar' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIs...' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "valor": 50.00
+  }'
+```
+
+### 5. Verificar saldo
+
+```bash
+curl -X GET 'http://localhost:8000/api/v1/conta/saldo' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIs...'
+```
+
+### 6. Ver extrato
+
+```bash
+curl -X GET 'http://localhost:8000/api/v1/extrato' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIs...'
+```
+
+## Usuários de Teste
+
+Use estas credenciais para testar a API:
+
+| CPF | Senha |
+|-----|-------|
+| 12345678901 | senha123 |
+| 98765432109 | maria456 |
+| 11122233344 | pedro789 |
+| 55544433322 | ana321 |
+| 77788899900 | carlos654 |
+
+## Endpoints Disponíveis
+
+| Método | Rota | Descrição | Requer Token |
+|--------|------|-----------|--------------|
+| POST | `/api/v1/usuarios/registrar` | Registrar novo usuário | ✗ |
+| POST | `/api/v1/auth/login` | Fazer login e obter JWT | ✗ |
+| GET | `/api/v1/conta/saldo` | Consultar saldo | ✓ |
+| POST | `/api/v1/transacoes/depositar` | Realizar depósito | ✓ |
+| POST | `/api/v1/transacoes/sacar` | Realizar saque | ✓ |
+| GET | `/api/v1/extrato` | Ver histórico de transações | ✓ |
+| GET | `/api/v1/usuarios/perfil` | Ver dados do usuário | ✓ |
+| GET | `/api/v1/health` | Verificar status da API | ✗ |
+
+## Regras de Negócio
+
+- **Saque máximo**: R$ 500.00 por transação
+- **Limite diário**: Máximo 3 saques por dia
+- **Saldo**: Saque não permitido sem saldo suficiente
+- **CPF único**: Cada CPF pode registrar apenas uma conta
+- **Senha**: Mínimo de 6 caracteres
+- **Token**: Válido por 30 minutos
+
+## Estrutura de Arquivos
+
+```
+├── api.py                    # Aplicação principal (FastAPI)
+├── usuarios.json             # Base de dados de usuários
+├── contas.json               # Base de dados de contas
+├── requirements.txt          # Dependências Python
+├── run_api.py               # Script para executar API
+├── test_api.py              # Testes automatizados
+└── README.md                # Documentação
+```
+
+## Tecnologias Utilizadas
+
+- **FastAPI** 0.128.0 - Framework web REST
+- **Uvicorn** 0.40.0 - Servidor ASGI
+- **PyJWT** 2.8.1 - Autenticação JWT
+- **Pydantic** 2.12.5 - Validação de dados
+- **Python** 3.13.2 - Linguagem
+- **JSON** - Persistência de dados
+
+## Como Usar no Swagger UI
+
+1. Acesse http://localhost:8000/docs
+2. Clique em "POST /api/v1/auth/login"
+3. Registre um usuário ou use as credenciais de teste
+4. Copie o `access_token` retornado
+5. Clique no botão **"Authorize"** (ícone de cadeado)
+6. Cole o token e clique em "Login"
+7. Agora você pode testar todos os endpoints protegidos
+
+## Desafio DIO
+
+Projeto desenvolvido como parte do **Bootcamp Luizalabs - Back-end com Python** (Desafio DIO)
+

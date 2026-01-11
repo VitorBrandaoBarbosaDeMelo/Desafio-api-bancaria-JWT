@@ -1,8 +1,42 @@
-[
-    {
-        "nome": "Vitor Brandao",
-        "data_nascimento": "01121992",
-        "cpf": "10866967435",
-        "endereco": "Av Jules, 256 - Santa Terezinha - Londrina/PR"
+{
+    "12345678901": {
+        "nome": "João Silva",
+        "cpf": "12345678901",
+        "data_nascimento": "15-03-1990",
+        "endereco": "Rua A, 123 - Centro - São Paulo/SP",
+        "senha": "senha123",
+        "data_criacao": "10-01-2026 21:40:12"
+    },
+    "98765432109": {
+        "nome": "Maria Santos",
+        "cpf": "98765432109",
+        "data_nascimento": "20-05-1985",
+        "endereco": "Avenida B, 456 - Bairro X - Rio de Janeiro/RJ",
+        "senha": "maria456",
+        "data_criacao": "10-01-2026 21:45:00"
+    },
+    "11122233344": {
+        "nome": "Pedro Oliveira",
+        "cpf": "11122233344",
+        "data_nascimento": "10-10-1995",
+        "endereco": "Rua C, 789 - Bairro Y - São Paulo/SP",
+        "senha": "pedro789",
+        "data_criacao": "10-01-2026 21:46:00"
+    },
+    "55544433322": {
+        "nome": "Ana Costa",
+        "cpf": "55544433322",
+        "data_nascimento": "25-08-1988",
+        "endereco": "Rua D, 321 - Vila Z - Belo Horizonte/MG",
+        "senha": "ana321",
+        "data_criacao": "10-01-2026 21:47:00"
+    },
+    "77788899900": {
+        "nome": "Carlos Souza",
+        "cpf": "77788899900",
+        "data_nascimento": "30-12-1992",
+        "endereco": "Rua E, 654 - Área W - Curitiba/PR",
+        "senha": "carlos654",
+        "data_criacao": "10-01-2026 21:48:00"
     }
-]
+}
